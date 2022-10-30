@@ -1,10 +1,10 @@
 // - - - IMPORTS - - - //
 
 import {Button, SafeAreaView, StyleSheet, Text, TextInput } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-//import * as React from 'react';
+import React, {useState} from 'react';
 
 // - - - APP - - - //
 
@@ -20,6 +20,8 @@ export default function App() {
 
 
 // - - - NAVIGATION - - - //
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -64,14 +66,29 @@ const ViewGameScreen = () => {
 }
 
 const AddGameScreen = () => {
+  
+  const navigation = useNavigation();
+
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  
+  const handleSubmit = () => {
+    setTitle('');
+    setDescription('');
+    navigation.navigate('View Games');
+  };
+
   return (
     <SafeAreaView style = {styles.container}>
       <Text>Tell us about your game:</Text>
       <Text></Text>
       <Text>Title:</Text>
-      <TextInput style={styles.input}></TextInput>
+      <TextInput style={styles.input} placeholder='Name your game' value={title} onChangeText={ (newTitle) => {setTitle(newTitle)}}></TextInput>
       <Text></Text>
-      <Button title='Submit' onPress = { () => alert('coming soon...')}/>
+      <Text>Description:</Text>
+      <TextInput style={styles.input} placeholder='How do you play?' value={description} onChangeText={ (newDescription) => {setDescription(newDescription)}}></TextInput>
+      <Text></Text>
+      <Button title='Submit' onPress = {handleSubmit}/>
     </SafeAreaView>
   )
 }
