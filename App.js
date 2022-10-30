@@ -1,12 +1,12 @@
 // - - - IMPORTS
 
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+//import * as React from 'react';
 
 export default function App() {
   return (
-    //<ListGameScreen></ListGameScreen>
-    //<ViewGameScreen></ViewGameScreen>
-    <AddGameScreen></AddGameScreen>
+    <ListGameScreen></ListGameScreen>
   );
 }
 
