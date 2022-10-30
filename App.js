@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+// - - - IMPORTS
+
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 export default function App() {
   return (
-    // <View style={styles.container}>
-    //   <Text>Share ESOL classroom games!</Text>
-    //   <StatusBar style="auto" />
-    // </View>
-    <HomeScreen></HomeScreen>
+    //<ListGameScreen></ListGameScreen>
+    //<ViewGameScreen></ViewGameScreen>
+    <AddGameScreen></AddGameScreen>
   );
 }
 
-const HomeScreen = () => {
+const ListGameScreen = () => {
   return (
     <SafeAreaView style = {styles.container}>
-      <Text>Share ESOL classroom games!</Text>
+      <Text>Here are some great games shared by ESOL teachers:</Text>
+    </SafeAreaView>
+  )
+}
+
+const ViewGameScreen = () => {
+  return (
+    <SafeAreaView style = {styles.container}>
+      <Text>Here's how this game works:</Text>
+    </SafeAreaView>
+  )
+}
+
+const AddGameScreen = () => {
+  return (
+    <SafeAreaView style = {styles.container}>
+      <Text>Tell us about your game:</Text>
     </SafeAreaView>
   )
 }
