@@ -1,15 +1,17 @@
 import {SafeAreaView, Text} from 'react-native';
-import React from 'react';
+import React, {Component} from 'react';
 import styles from '../styles/styles';
 
-const ListGameScreen = () => {
+class ListGameScreen extends Component {
 
-  return (
-    <SafeAreaView style = {styles.container}>
-      <Text>Here are some great games shared by ESOL teachers: </Text>
-      <Text></Text>
-    </SafeAreaView>
-  )
+  render() {
+    return (
+      <SafeAreaView style = {styles.container}>
+        <Text>Here are some great games shared by ESOL teachers: </Text>
+        <Text></Text>
+      </SafeAreaView>
+    )
+  }
 }
 
 export default ListGameScreen;

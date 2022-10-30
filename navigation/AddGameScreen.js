@@ -1,34 +1,47 @@
 import {Button, SafeAreaView, Text, TextInput } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import styles from '../styles/styles';
 
-const AddGameScreen = () => {
+export default class AddGameScreen extends Component {
   
-    const navigation = useNavigation();
-  
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    constructor(props) {
+        super(props)
+//        const navigation = useNavigation();
+        this.state= {
+            title: '',
+            description: ''
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        //const [title, setTitle] = useState('');
+        //const [description, setDescription] = useState('');
+    }
     
-    const handleSubmit = () => {
-      setTitle('');
-      setDescription('');
-      navigation.navigate('View Games');
-    };
-  
-    return (
-      <SafeAreaView style = {styles.container}>
-        <Text>Tell us about your game:</Text>
-        <Text></Text>
-        <Text>Title:</Text>
-        <TextInput style={styles.input} placeholder='Name your game' value={title} onChangeText={ (newTitle) => {setTitle(newTitle)}}></TextInput>
-        <Text></Text>
-        <Text>Description:</Text>
-        <TextInput style={styles.input} placeholder='How do you play?' value={description} onChangeText={ (newDescription) => {setDescription(newDescription)}}></TextInput>
-        <Text></Text>
-        <Button title='Submit' onPress = {handleSubmit}/>
-      </SafeAreaView>
-    )
-  }
+    ComponentWillUnmount() {
+        if (this.state.title || this.state.description) {
+            this.setState({title: ''});
+            this.setState({description: ''});
+        }
+    }
 
-  export default AddGameScreen;
+    handleSubmit() {
+
+    //   navigation.navigate('View Games');
+    alert("Yes");
+    }
+  
+    render() {
+
+        return (
+        <SafeAreaView style = {styles.container}>
+            <Text>Title:</Text>
+            <TextInput style={styles.input} placeholder='Name your game' value={this.state.title} onChangeText={ (title) => this.setState({title})}></TextInput>
+            <Text>{this.state.title}</Text>
+            <Text>Description:</Text>
+            <TextInput style={styles.input} placeholder='How do you play?' value={this.state.description} onChangeText={ (description) => this.setState({description})}></TextInput>
+            <Text>{this.state.description}</Text>
+            <Button title='Submit' onPress = {this.handleSubmit}/>
+        </SafeAreaView>
+        )
+    }
+  }
