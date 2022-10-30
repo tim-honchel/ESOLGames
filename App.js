@@ -1,13 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <View style={styles.container}>
+    //   <Text>Share ESOL classroom games!</Text>
+    //   <StatusBar style="auto" />
+    // </View>
+    <HomeScreen></HomeScreen>
   );
+}
+
+const HomeScreen = () => {
+  return (
+    <SafeAreaView style = {styles.container}>
+      <Text>Share ESOL classroom games!</Text>
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
