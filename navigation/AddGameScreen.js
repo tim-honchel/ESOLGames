@@ -27,14 +27,18 @@ export default class AddGameScreen extends Component {
 
     // saves game state as an object, adds it to AsyncStorage, and navigates to the ListGameScreen
     async handleSubmit() {
+        const entries = await AsyncStorage.getItem("autoID");
         const gamesJSON = await AsyncStorage.getItem("Games");
         const gamesParsed = gamesJSON ? JSON.parse(gamesJSON) : [];
-        const newID = gamesParsed.length;
-        console.log(newID);
-        const gameToAdd = {id: newID, title: this.state.title, description: this.state.description};
+        //const newID = gamesParsed.length;
+        const autoID = Math.max(...gamesParsed.map(game => game.id))+1;
+        console.log("AutoID: ", autoID);
+        const gameToAdd = {id: autoID, title: this.state.title, description: this.state.description};
         gamesParsed.push(gameToAdd);
-        console.log(gamesParsed);
         await AsyncStorage.setItem("Games", JSON.stringify(gamesParsed));
+        //const updatedGames = gamesParsed.filter(game=>game.id!=this.state.id);
+
+        //AsyncStorage.setItem("autoID", 0);
         this.setState({title: ''});
         this.setState({description:''});
         alert("Added your game!");

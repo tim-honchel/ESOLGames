@@ -16,8 +16,6 @@ export default class ListGameScreen extends Component {
 
   // creates event listener that is triggered each time this screen comes into focus, calling the getGames() function
   componentDidMount() {
-    console.log("---Component Mounted---");
-    //AsyncStorage.setItem("Games", JSON.stringify([]));
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       this.getGames();
     });
