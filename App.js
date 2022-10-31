@@ -1,12 +1,11 @@
-// - - - IMPORTS - - - //
-
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import StackNavigator from './navigation/Navigators';
 
-// - - - APP - - - //
-
 export default function App() {
+
+  // on startup, app displays first component listed in StackNavigator, with the ability to navigate to all other screens
+  
   return (
     <NavigationContainer>
       <StackNavigator>
@@ -14,16 +13,4 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// - - - SCREENS - - - //
-
-
-
-
-// - - - OBJECTS - - - //
-
-
-
-// - - - STYLES - - - //
-
 

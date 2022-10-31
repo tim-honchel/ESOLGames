@@ -3,8 +3,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ListGameScreen from './ListGameScreen';
 import ViewGameScreen from './ViewGameScreen';
 import AddGameScreen from './AddGameScreen';
+import SettingScreen from './SettingScreen';
 
 const Stack = createNativeStackNavigator();
+
+// each screen in the StackNavigator will be able to use the navigation.navigate() function to switch to another screen
 
 const StackNavigator = () => {
   return (
@@ -13,17 +16,21 @@ const StackNavigator = () => {
       <Stack.Screen name='View Games' component={ListGameScreen}/>
       <Stack.Screen name='Game Details' component={ViewGameScreen}/>
       <Stack.Screen name='Share a Game' component={AddGameScreen}/>
+      <Stack.Screen name = 'Settings' component = {SettingScreen}/>
     </Stack.Navigator>
   )
 }
 
 const Tab = createBottomTabNavigator();
 
+// links to these screens will be displayed at the bottom of the phone screen
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name='View Games' component={ListGameScreen}/>
       <Tab.Screen name='Share a Game' component={AddGameScreen}/>
+      <Tab.Screen name = 'Settings' component = {SettingScreen}/>
     </Tab.Navigator>
   )
 }

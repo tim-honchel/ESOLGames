@@ -1,24 +1,23 @@
 import {AsyncStorage, Button, SafeAreaView, Text, TextInput } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import React, {Component} from 'react';
 import styles from '../styles/styles';
-//import AsyncStorage from "@react-native-community/async-storage";
 import ListGameScreen from './ListGameScreen';
 
 export default class AddGameScreen extends Component {
   
     constructor(props) {
         super(props)
-//        const navigation = useNavigation();
+        // inputted game information
         this.state= {
+            id: '',
             title: '',
             description: ''
         }
+        // binds functions to the class with 'this' keyword
         this.handleSubmit = this.handleSubmit.bind(this);
-        //const [title, setTitle] = useState('');
-        //const [description, setDescription] = useState('');
     }
     
+    // clears the state and text input boxes
     ComponentWillUnmount() {
         if (this.state.title || this.state.description) {
             this.setState({title: ''});
@@ -26,15 +25,18 @@ export default class AddGameScreen extends Component {
         }
     }
 
+    // saves game state as an object, adds it to AsyncStorage, and navigates to the ListGameScreen
     async handleSubmit() {
-        const gameToAdd = {title: this.state.title, description: this.state.description};
         const gamesJSON = await AsyncStorage.getItem("Games");
         const gamesParsed = gamesJSON ? JSON.parse(gamesJSON) : [];
+        const newID = gamesParsed.length;
+        console.log(newID);
+        const gameToAdd = {id: newID, title: this.state.title, description: this.state.description};
         gamesParsed.push(gameToAdd);
+        console.log(gamesParsed);
         await AsyncStorage.setItem("Games", JSON.stringify(gamesParsed));
         this.setState({title: ''});
         this.setState({description:''});
-        //ListGameScreen.getGames();
         alert("Added your game!");
         this.props.navigation.navigate('View Games');
     }
