@@ -10,7 +10,7 @@ export default class AddGameScreen extends Component {
     }
 
     async handleClear() {
-        AsyncStorage.setItem("Games", JSON.stringify([{}]));
+        AsyncStorage.setItem("Games", JSON.stringify([]));
         alert("Cleared all games!");
         this.props.navigation.navigate('View Games');
     }

@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ListGameScreen from './ListGameScreen';
 import ViewGameScreen from './ViewGameScreen';
+import EditGameScreen from './EditGameScreen';
 import AddGameScreen from './AddGameScreen';
 import SettingScreen from './SettingScreen';
 
@@ -15,6 +16,7 @@ const StackNavigator = () => {
       <Stack.Screen name='ESOL GAMES' component={TabNavigator}/>
       <Stack.Screen name='View Games' component={ListGameScreen}/>
       <Stack.Screen name='Game Details' component={ViewGameScreen}/>
+      <Stack.Screen name='Edit Game' component={EditGameScreen}/>
       <Stack.Screen name='Share a Game' component={AddGameScreen}/>
       <Stack.Screen name = 'Settings' component = {SettingScreen}/>
     </Stack.Navigator>

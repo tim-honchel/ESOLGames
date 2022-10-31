@@ -16,6 +16,8 @@ export default class ListGameScreen extends Component {
 
   // creates event listener that is triggered each time this screen comes into focus, calling the getGames() function
   componentDidMount() {
+    console.log("---Component Mounted---");
+    //AsyncStorage.setItem("Games", JSON.stringify([]));
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       this.getGames();
     });
@@ -31,6 +33,8 @@ export default class ListGameScreen extends Component {
 		AsyncStorage.getItem("Games").then((games) => {
 			this.setState({allGames: JSON.parse(games)})
 		})
+    console.log("---Fetching records---");
+    console.log("Records fetched: ", this.state.allGames);
 	}
 
   // if there are games saved, displays each game in its own row
